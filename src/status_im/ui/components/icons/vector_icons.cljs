@@ -268,3 +268,4 @@
   ([name options]
    (let [icon-fn (if platform/desktop? desktop-icon mobile-icon)]
      [icon-fn name options])))
+
