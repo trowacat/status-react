@@ -58,9 +58,9 @@
                 "boot-01.gc-us-central1-a.eth.staging": "enode://10a78c17929a7019ef4aa2249d7302f76ae8a06f40b2dc88b7b31ebff4a623fbb44b4a627acba296c1ced3775d91fbe18463c15097a6a36fdb2c804ff3fc5b35@35.238.97.234:443"
             },
             "mail": {
-                "mail-01.ac-cn-hongkong-c.eth.staging": "enode://9ea7fbf9bc3844b7f154464c39935d0af71f6d4deb312fbd67b95785389f68dda221276512b8186e71453ef95148cf3ccd5ecc05a2e7deb64182d8ca36916746@47.52.90.156:443",
-                "mail-01.do-ams3.eth.staging": "enode://0df547a113d303517db1b77f0b429386b11611ca10b86b7647528c688b41984b68bae31910be3f4ee1dd14b26876062a2a899109e8067a751ac8e3907dadee4b@206.189.240.16:443",
-                "mail-01.gc-us-central1-a.eth.staging": "enode://fcec096da40ef71cf650c5d076ac5455e717d3fcf2f5ef249a71b29a0643cf5c677d91a0c3614f858f5ba14d360f3f9a207b44041aefa71c91c3e736c1888f7c@35.239.193.41:443"
+                "mail-01.ac-cn-hongkong-c.eth.staging": "enode://b74859176c9751d314aeeffc26ec9f866a412752e7ddec91b19018a18e7cca8d637cfe2cedcb972f8eb64d816fbd5b4e89c7e8c7fd7df8a1329fa43db80b0bfe@47.52.90.156:443",
+                "mail-01.do-ams3.eth.staging": "enode://69f72baa7f1722d111a8c9c68c39a31430e9d567695f6108f31ccb6cd8f0adff4991e7fdca8fa770e75bc8a511a87d24690cbc80e008175f40c157d6f6788d48@206.189.240.16:443",
+                "mail-01.gc-us-central1-a.eth.staging": "enode://e4fc10c1f65c8aed83ac26bc1bfb21a45cc1a8550a58077c8d2de2a0e0cd18e40fd40f7e6f7d02dc6cd06982b014ce88d6e468725ffe2c138e958788d0002a7f@35.239.193.41:443"
             },
             "whisper": {
                 "node-01.ac-cn-hongkong-c.eth.staging": "enode://00395686f5954662a3796e170b9e87bbaf68a050d57e9987b78a2292502dae44aae2b8803280a017ec9af9be0b3121db9d6b3693ab3a0451a866bcbedd58fdac@47.52.226.137:443",
@@ -80,14 +80,14 @@
                 "boot-01.gc-us-central1-a.eth.test": "enode://c1e5018887c863d64e431b69bf617561087825430e4401733f5ba77c70db14236df381fefb0ebe1ac42294b9e261bbe233dbdb83e32c586c66ae26c8de70cb4c@35.188.168.137:443"
             },
             "mail": {
-                "mail-01.ac-cn-hongkong-c.eth.test": "enode://f92d621978ac82ee3591386851674be8236c7329f7de30407383f3815d16e5b68a4c44f456ffec28d191edf0d92dae442e818d515d12da1ebe544aaf572a32a9@47.52.188.196:443",
-                "mail-01.do-ams3.eth.test": "enode://ff7f100a45c7aa0f6711e0f316070203686736f345977feca13ec9aaad99e89853fb11485acd4f530ed76a9a7b8519bd24f26113ba6c3c0051ec0f0451018b20@206.189.243.161:443",
-                "mail-01.gc-us-central1-a.eth.test": "enode://b71cd454b20d838eb2262c4ed247ffd4df9a2951c4746bf93852f20cb00f8264d406c1a5df99df4433327deca7e3a67dc5cd694ffe6bcc8bc6c50cf18fd818f8@35.192.229.172:443"
+                "mail-01.ac-cn-hongkong-c.eth.test": "enode://619dbb5dda12e85bf0eb5db40fb3de625609043242737c0e975f7dfd659d85dc6d9a84f9461a728c5ab68c072fed38ca6a53917ca24b8e93cc27bdef3a1e79ac@47.52.188.196:443",
+                "mail-01.do-ams3.eth.test": "enode://e4865fe6c2a9c1a563a6447990d8e9ce672644ae3e08277ce38ec1f1b690eef6320c07a5d60c3b629f5d4494f93d6b86a745a0bf64ab295bbf6579017adc6ed8@206.189.243.161:443",
+                "mail-01.gc-us-central1-a.eth.test": "enode://707e57453acd3e488c44b9d0e17975371e2f8fb67525eae5baca9b9c8e06c86cde7c794a6c2e36203bf9f56cae8b0e50f3b33c4c2b694a7baeea1754464ce4e3@35.192.229.172:443"
             },
             "whisper": {
                 "node-01.ac-cn-hongkong-c.eth.test": "enode://ad38f94030a846cc7005b7a1f3b6b01bf4ef59d34e8d3d6f4d12df23d14ba8656702a435d34cf4df3b412c0c1923df5adcce8461321a0d8ffb9435b26e572c2a@47.52.255.194:443",
                 "node-01.do-ams3.eth.test": "enode://1d193635e015918fb85bbaf774863d12f65d70c6977506187ef04420d74ec06c9e8f0dcb57ea042f85df87433dab17a1260ed8dde1bdf9d6d5d2de4b7bf8e993@206.189.243.163:443",
-                "node-01.gc-us-central1-a.eth.test": "enode://d41c957ed2bef6612bc40d998c39140ee7d3f57cc436ac8c5658803f3193a688a8195a178e548a1180f42f1c2b0450d8937d5b40ffd625c50656a0edc018b6a9@35.194.31.108:443"
+                "node-01.gc-us-central1-a.eth.test": "enode://f593a27731bc0f8eb088e2d39222c2d59dfb9bf0b3950d7a828d51e8ab9e08fffbd9916a82fd993c1a080c57c2bd70ed6c36f489a969de697aff93088dbee1a9@35.194.31.108:443"
             }
         }
     },
