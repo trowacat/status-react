@@ -230,3 +230,7 @@
                                         {:type "string[]" :optional true}
                                         :recent-stickers
                                         {:type "string[]" :optional true}}))
+
+(def v20 (update v19 :properties merge
+                 {:syncing-on-mobile-network? {:type :bool :default false}
+                  :remember-syncing-choice?   {:type :bool :default false}}))
