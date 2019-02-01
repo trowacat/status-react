@@ -22,10 +22,6 @@ else
   PLATFORM=$1
 fi
 
-if [[ $PLATFORM == 'setup' ]]; then
-  load_nvm_if_available
-fi
-
 if ! program_version_exists node $EXPECTED_NODE_VERSION || ! program_version_exists yarn $EXPECTED_YARN_VERSION; then
   echo -e "${YELLOW}********************************************************************************************"
 
@@ -35,11 +31,6 @@ if ! program_version_exists node $EXPECTED_NODE_VERSION || ! program_version_exi
   echo -e "  - yarn:\texpected\t${EXPECTED_YARN_VERSION}"
   echo -e "  \t\tfound\t\t$(yarn -v) ($(which yarn))"
   echo -e "Please open another console to reload the environment, and then run 'make setup' if necessary."
-
-  load_nvm_if_available
-  if nvm_installed; then
-    echo -e "Afterwards, run 'nvm use status-im' in the terminal and try again."
-  fi
 
   echo -e "**********************************************************************************************${NC}"
   exit 1
@@ -56,7 +47,7 @@ if [[ $PLATFORM == 'android' ]]; then
 fi
 
 if [[ $PLATFORM == 'setup' ]]; then
-  echo -e "${YELLOW}Finished! Please close your terminal, and reopen a new one before building Status.${NC}"
+  echo -e "${YELLOW}Finished! Please close your terminal, reopen a new one and type 'nix-shell' before building Status.${NC}"
 else
   echo -e "${GREEN}Finished!${NC}"
 fi
