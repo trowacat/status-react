@@ -66,7 +66,7 @@
             [status-im.ui.screens.hardwallet.setup.views :refer [hardwallet-setup]]
             [status-im.ui.screens.hardwallet.success.views :refer [hardwallet-success]]
             [status-im.ui.screens.profile.seed.views :refer [backup-seed]]
-            [status-im.ui.screens.profile.ttt.views :refer [tribute-to-talk]]
+            [status-im.ui.screens.profile.tribute-to-talk.views :refer [tribute-to-talk]]
             [status-im.ui.screens.about-app.views :as about-app]
             [status-im.ui.screens.stickers.views :as stickers]
             [status-im.ui.screens.dapps-permissions.views :as dapps-permissions]
