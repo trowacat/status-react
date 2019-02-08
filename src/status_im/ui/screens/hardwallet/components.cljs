@@ -36,28 +36,31 @@
          "Close window"]]]]]))
 
 (def step-name
-  {:preparing                     {:label     :t/initialization
+  {:pin                           {:label     :t/pin-code
                                    :number    1
+                                   :next-step :preparing}
+   :preparing                     {:label     :t/initialization
+                                   :number    2
                                    :next-step :secret-keys}
    :secret-keys                   {:label     :t/puk-and-pair-codes
-                                   :number    2
+                                   :number    3
                                    :next-step :pairing}
    :pairing                       {:label     :t/pairing
-                                   :number    3
+                                   :number    4
                                    :next-step :recovery-phrase}
    :card-ready                    {:label     :t/pairing
-                                   :number    3
+                                   :number    5
                                    :next-step :recovery-phrase}
    :generating-mnemonic           {:label  :t/recovery-phrase
-                                   :number 4}
+                                   :number 5}
    :recovery-phrase-confirm-word1 {:label  :t/recovery-phrase
-                                   :number 4}
+                                   :number 5}
    :recovery-phrase-confirm-word2 {:label  :t/recovery-phrase
-                                   :number 4}
+                                   :number 5}
    :loading-keys                  {:label  :t/recovery-phrase
-                                   :number 4}
+                                   :number 5}
    :recovery-phrase               {:label  :t/recovery-phrase
-                                   :number 4}})
+                                   :number 5}})
 
 (defn- setup-steps [step]
   (let [current-step (step-name step)
@@ -97,9 +100,7 @@
       :display-name        "maintain-card"
       :reagent-render      (fn [step] [react/view styles/maintain-card-container
                                        [react/touchable-highlight
-                                        {:on-press #(do
-                                                      (re-frame/dispatch [:hardwallet.ui/get-application-info])
-                                                      (reset! modal-visible? true))}
+                                        {:on-press #()}
                                         [react/view styles/hardwallet-icon-container
                                          [vector-icons/icon :main-icons/keycard {:color colors/blue}]
                                          [vector-icons/icon :icons/indicator-small {:color           colors/blue

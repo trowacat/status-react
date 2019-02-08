@@ -920,6 +920,16 @@
    (hardwallet/on-card-disconnected cofx data)))
 
 (handlers/register-handler-fx
+ :hardwallet.callback/on-init-card-success
+ (fn [cofx [_ secrets]]
+   (hardwallet/on-init-card-success cofx secrets)))
+
+(handlers/register-handler-fx
+ :hardwallet.callback/on-init-card-error
+ (fn [cofx [_ error]]
+   (hardwallet/on-init-card-error cofx error)))
+
+(handlers/register-handler-fx
  :hardwallet.callback/on-install-applet-and-init-card-success
  (fn [cofx [_ secrets]]
    (hardwallet/on-install-applet-and-init-card-success cofx secrets)))
@@ -1028,6 +1038,11 @@
    (hardwallet/login-with-keycard cofx false)))
 
 (handlers/register-handler-fx
+ :hardwallet/check-card-state
+ (fn [cofx _]
+   (hardwallet/check-card-state cofx)))
+
+(handlers/register-handler-fx
  :hardwallet.callback/on-get-keys-error
  (fn [cofx [_ error]]
    (hardwallet/on-get-keys-error cofx error)))
@@ -1048,31 +1063,19 @@
    {:hardwallet/open-nfc-settings nil}))
 
 (handlers/register-handler-fx
- :hardwallet.ui/hold-card-button-pressed
- (fn [{:keys [db] :as cofx} _]
-   (fx/merge cofx
-             {:db (assoc-in db [:hardwallet :setup-step] :begin)}
-             (navigation/navigate-to-cofx :hardwallet-setup nil))))
-
-(handlers/register-handler-fx
  :hardwallet.ui/begin-setup-button-pressed
- (fn [_ _]
-   {:ui/show-confirmation {:title               ""
-                           :content             (i18n/label :t/begin-keycard-setup-confirmation-text)
-                           :confirm-button-text (i18n/label :t/yes)
-                           :cancel-button-text  (i18n/label :t/no)
-                           :on-accept           #(re-frame/dispatch [:hardwallet.ui/begin-setup-confirm-button-pressed])
-                           :on-cancel           #()}}))
+ (fn [cofx _]
+   (hardwallet/begin-setup-button-pressed cofx)))
+
+;(handlers/register-handler-fx
+; :hardwallet.ui/begin-setup-button-pressed
+; (fn [cofx _]
+;   (hardwallet/load-preparing-screen cofx)))
 
 (handlers/register-handler-fx
- :hardwallet.ui/begin-setup-confirm-button-pressed
+ :hardwallet/start-installation
  (fn [cofx _]
-   (hardwallet/load-preparing-screen cofx)))
-
-(handlers/register-handler-fx
- :hardwallet/install-applet-and-init-card
- (fn [cofx _]
-   (hardwallet/install-applet-and-init-card cofx)))
+   (hardwallet/start-installation cofx)))
 
 (handlers/register-handler-fx
  :hardwallet.ui/pair-card-button-pressed
@@ -1082,11 +1085,12 @@
 (handlers/register-handler-fx
  :hardwallet.ui/pair-code-input-changed
  (fn [{:keys [db]} [_ pair-code]]
-   {:db (assoc-in db [:hardwallet :pair-code] pair-code)}))
+   {:db (assoc-in db [:hardwallet :secrets :password] pair-code)}))
 
 (handlers/register-handler-fx
  :hardwallet.ui/pair-code-next-button-pressed
- (fn [{:keys [db]} _]))
+ (fn [cofx]
+   (hardwallet/pair cofx)))
 
 (handlers/register-handler-fx
  :hardwallet.ui/recovery-phrase-next-button-pressed

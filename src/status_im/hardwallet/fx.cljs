@@ -26,6 +26,10 @@
  card/install-applet-and-init-card)
 
 (re-frame/reg-fx
+ :hardwallet/init-card
+ card/init-card)
+
+(re-frame/reg-fx
  :hardwallet/register-card-events
  card/register-card-events)
 
