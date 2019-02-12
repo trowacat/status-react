@@ -14,7 +14,8 @@
    [status-im.ui.screens.routing.intro-login-stack :as intro-login-stack]
    [status-im.ui.screens.routing.chat-stack :as chat-stack]
    [status-im.ui.screens.routing.wallet-stack :as wallet-stack]
-   [status-im.ui.screens.routing.profile-stack :as profile-stack]))
+   [status-im.ui.screens.routing.profile-stack :as profile-stack]
+   [status-im.ui.screens.main-tabs.views :as tabs]))
 
 (defn wrap [view-id component]
   (fn []
@@ -67,6 +68,11 @@
    routes
    (prepare-config config)))
 
+(defn tab-navigator [routes config]
+  (nav-reagent/tab-navigator
+   routes
+   (prepare-config config)))
+
 (defn build-screen [screen]
   (let [[screen-name screen-config]
         (cond (keyword? screen)
@@ -88,7 +94,10 @@
 
                 :else
                 (nav-reagent/stack-screen (wrap screen-name screen-config)))]
-      [screen-name {:screen res}])))
+      [screen-name (cond-> {:screen res}
+                     (:navigation screen-config)
+                     (assoc :navigationOptions
+                            (:navigation screen-config)))])))
 
 (defn stack-screens [screens-map]
   (->> screens-map
@@ -98,10 +107,26 @@
 (defn get-main-component [view-id]
   (log/debug :component view-id)
   (switch-navigator
-   (->> [(intro-login-stack/intro-login-stack view-id)
-         chat-stack/chat-stack
-         wallet-stack/wallet-stack
-         profile-stack/profile-stack]
-        (map build-screen)
-        (into {}))
+   (into {}
+         [(build-screen (intro-login-stack/intro-login-stack view-id))
+          [:tabs
+           {:screen (tab-navigator
+                     (->> [(build-screen chat-stack/chat-stack)
+                           (build-screen wallet-stack/wallet-stack)
+                           (build-screen profile-stack/profile-stack)]
+                          (into {}))
+                     {:initialRouteName :chat-stack
+                      :tabBarComponent  (reagent.core/reactify-component
+                                         (fn [args]
+                                           (let [idx (.. (:navigation
+                                                          args)
+                                                         -state
+                                                         -index)
+
+                                                 tab   (case idx
+                                                         0 :chat-stack
+                                                         1 :wallet-stack
+                                                         2 :home-stack
+                                                         :chat-stack)]
+                                             [tabs/tabs tab])))})}]])
    {:initialRouteName :intro-login-stack}))

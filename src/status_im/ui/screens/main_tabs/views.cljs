@@ -13,17 +13,17 @@
             [status-im.ui.components.common.common :as components.common]))
 
 (def tabs-list-data
-  [{:view-id             :home
+  [{:view-id             :chat-stack
     :content             {:title         (i18n/label :t/home)
                           :icon :main-icons/home}
     :count-subscription  :chats/unread-messages-number
     :accessibility-label :home-tab-button}
-   {:view-id             :wallet
+   {:view-id             :wallet-stack
     :content             {:title         (i18n/label :t/wallet)
                           :icon :main-icons/wallet}
     :count-subscription  :get-wallet-unread-messages-number
     :accessibility-label :wallet-tab-button}
-   {:view-id             :my-profile
+   {:view-id             :profile-stack
     :content             {:title         (i18n/label :t/profile)
                           :icon :main-icons/profile}
     :count-subscription  :get-profile-unread-messages-number
@@ -75,10 +75,7 @@
        :home [home/home-wrapper]
        :wallet [wallet.main/wallet]
        :my-profile [profile.user/my-profile]
-       nil)
-
-     (when tab-bar-visible?
-       [tabs view-id])]))
+       nil)]))
 
 (defn main-tabs [view-id]
   [react/view common.styles/flex
