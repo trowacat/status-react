@@ -42,7 +42,6 @@ if ! program_exists "nix"; then
   exit
 fi
 install_nsis
-install_react_native_cli
 install_android_sdk
 install_android_ndk
 install_cocoapods
