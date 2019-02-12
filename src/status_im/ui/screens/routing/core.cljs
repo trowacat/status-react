@@ -123,10 +123,10 @@
                                                          -state
                                                          -index)
 
-                                                 tab   (case idx
-                                                         0 :chat-stack
-                                                         1 :wallet-stack
-                                                         2 :home-stack
-                                                         :chat-stack)]
-                                             [tabs/tabs tab])))})}]])
+                                                 tab (case idx
+                                                       0 :chat-stack
+                                                       1 :wallet-stack
+                                                       2 :home-stack
+                                                       :chat-stack)]
+                                             [react/safe-area-view [tabs/tabs tab]])))})}]])
    {:initialRouteName :intro-login-stack}))
