@@ -252,7 +252,7 @@
       (log/debug "handle-push-notification-open"
                  "current-public-key:" current-public-key
                  "rehydrated-payload:" rehydrated-payload "stored?:" stored?)
-      (if (= to current-public-key)
+      (if (and (= to current-public-key) (not (= from null)))
         (fx/merge cofx
                   {:db (update db :push-notifications/stored dissoc to)}
                   (chat-model/navigate-to-chat from nav-opts))
